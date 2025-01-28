@@ -71,10 +71,17 @@ if ($categories) {
     echo 'No categories found.';
 }
 ?>
-
-
-
-
+--------------------
+<?php
+    $posts = get_posts();
+    if ($posts) {
+        foreach ($posts as $post) {
+           echo '<p>'.the_title().'</p>';
+        }
+    } else {
+        echo 'No post found.';
+    }
+?>
 
         </textarea>
       </div>
