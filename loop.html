@@ -57,12 +57,20 @@ endif;
 wp_reset_postdata();
 ?> 
 ------------------------------
-
-
-
-
-
-
+<?php
+$categories = get_categories();
+if ($categories) {
+    echo '<ul class="category-list">';
+    foreach ($categories as $category) {
+        echo '<li>';
+        echo '<a href="' . esc_url(get_category_link($category->term_id)) . '">' . esc_html($category->name) . '</a>(' . $category->count . ')';
+        echo '</li>';
+    }
+    echo '</ul>';
+} else {
+    echo 'No categories found.';
+}
+?>
 
 
 
